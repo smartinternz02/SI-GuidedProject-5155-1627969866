@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html >
+
+
+<head>
+	<meta charset="UTF-8">
+	<title>Fish Species Predictor</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<style>
+		.back {
+			
+			display: inline-block;
+			border: 5px solid #fca503;
+			padding: 15px;
+			background: #fcba03;
+			background-clip: padding-box;
+		
+		}
+		
+		.output {
+			padding: 15px;
+			background: white;	
+		}
+		
+		.title {
+			
+			display: inline-block;
+			border: 5px solid #fca503;
+			padding: 5px;
+			background: white;
+			background-clip: padding-box;
+		
+		}
+		
+		html *{
+		   font-family: Arial !important;
+		}
+		
+		body, html{
+			height= 100%
+		}
+		
+		.full{
+			background-image: url("fishbg.jpg");
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		
+		input[type=text], select {
+			width: 100%;
+			padding: 5px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+		
+		.btn{
+			background-color: #fa9302;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: solid black;
+			border-radius: 4px;
+			cursor: pointer;
+			
+		}
+
+		.btn:hover {
+			background-color: #cf8300;
+		}
+
+	</style>
+</head>
+
+
+<body>
+<div class= "full">
+	<center>
+		<br/>
+		<div class="title" ><h1>Fish Prediction</h1></div>
+		<br/><br/>
+
+		 <!-- Main Input For Receiving Query to our ML -->
+		<form action="{{url_for('y_predict')}}" method="post" role="form">
+			
+			
+				<div class="back">
+					
+					<b><strong>Please enter the Weight of the Fish</strong></b><br/><br/>
+					<input type="text" name="iweight" placeholder="weight" required="required" maxlength="120" />
+					<br></br>
+					
+					<b><strong>Please enter First measured Length of the fish</strong></b><br/><br/>
+					<input type="text" name="ifirst" placeholder="Length1" required="required" maxlength="120" />
+					<br></br>
+					
+					<b><strong>Please enter Second measured Length of the fish</strong></b><br/><br/>
+					<input type="text" name="isecond" placeholder="Length2" required="required" maxlength="120" />
+					<br></br>
+					
+					<b><strong>Please enter Third measured Length of the fish</strong></b><br/><br/>
+					<input type="text" name="ithird" placeholder="Length3" required="required" maxlength="120" />
+					<br></br>
+					
+					<b><strong>Please enter Height of the fish</strong></b><br/><br/>
+					<input type="text" name="iheight" placeholder="Height" required="required" maxlength="120" />
+					<br></br>
+					
+					<b><strong>Please enter width of the fish</strong></b><br/><br/>
+					<input type="text" name="iwidth" placeholder="Width" required="required" maxlength="120" />
+					<br></br>
+
+					<button type="submit" class="btn"><b><strong>Predict</b></strong></button>
+				
+				</div>
+
+		</form>
+
+	   <br>
+	   <br>
+	   	<div class="output" ><h1>{{ prediction_text }}</h1></div>
+	   <br><br><br><br><br><br><br><br>
+	</center>
+</div>
+</body>
+</html>
+
